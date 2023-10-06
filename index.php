@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <h2 class="mt-2"><?= $row["judul"];?></h2>
                     <h5><?= $row["subjudul"];?>, <?= $row["tgl"];?></h5>
-                    <div class="fakeimg">Fake Image</div>
+                    <img src="image/gambar1.jpg" alt="Gambar Artikel" class="img-fluid">
                     <p align="justify">
                         <?php 
                         $jmlKata = 50;
