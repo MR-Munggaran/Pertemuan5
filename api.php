@@ -12,24 +12,24 @@ $data =  array();
 $id = 0;
 if(isset($_GET['id'] && cekId($_GET['id'])){
     $id = $_GET['id'];
-}
-
-if(id>0){
+    //Query untuk mengambil data berita berdasarkan ID
     $sql = "SELECT * FROM berita WHERE id=$id";
-}else{
-    $sql = "SELECT * FROM berita";
+    //Eksekusi Query
+    $result = mysqli_query($conn, $sql);
+
+    // cek apakah data ditemukan
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $data = $row;
+    }else{
+        //jika data tidak ditemukan , kirim resoin JSON dgn pesan error
+        $data['error'] = 'Data tidak ditemukan';
+    }   
+}
+else{
+    $data['error'] = 'Invalid ID';
 }
 
-//Eksekusi Query
-$result = mysqli_query($conn, $sql);
 
-// cek apakah data ditemukan
-
-if(mysqli_num_rows($result) > 0){
-    $row = mysqli_fetch_assoc($result);
-    $data = $row;
-}else{
-    //jika data tidak ditemukan , kirim resoin JSON dgn pesan error
-    $data['error'] = 'Data tidak ditemukan';
-}
 ?>
