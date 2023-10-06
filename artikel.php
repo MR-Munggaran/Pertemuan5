@@ -56,7 +56,8 @@
             $hasil = mysqli_query($conn,$sql);
             $jmlData = mysqli_num_rows($hasil);
             if($jmlData>0){ 
-                while ($row = mysqli_fetch_assoc($hasil)){
+                // while ($row = mysqli_fetch_assoc($hasil)){
+                $row = mysqli_fetch_assoc($hasil);
             ?>
              
             <div class="row">
@@ -70,7 +71,7 @@
                         ?>
                     </p>
                 </div>
-                <?php }
+                <?php 
             } 
             else {
                 echo "<div class='col-sm-12'>Data NIHIL KAWAN </div>";
