@@ -42,6 +42,8 @@
     </nav>
     <div class="container">
         <section>
+             
+            <div class="row">
             <?php 
             include "connect.php";
             include "fungsi.php";
@@ -51,8 +53,6 @@
             if($jmlData>0){ 
                 while ($row = mysqli_fetch_assoc($hasil)){
             ?>
-             
-            <div class="row">
                 <div class="col-sm-6">
                     <h2 class="mt-2"><?= $row["judul"];?></h2>
                     <h5><?= $row["subjudul"];?>, <?= $row["tgl"];?></h5>

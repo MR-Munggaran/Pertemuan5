@@ -40,13 +40,10 @@
       <!-- <section>      
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="mt-2"><?= $row["judul"];?></h2>
-                    <h5><?= $row["subjudul"];?>, <?= $row["tgl"];?></h5>
+                    <h2 class="mt-2"></h2>
+                    <h5>, </h5>
                     <div class="fakeimg">Fake Image</div>
                     <p align="justify">
-                        <?php 
-                        echo $row["isi"];
-                        ?>
                     </p>
                 </div>
                 <?php 
@@ -68,5 +65,32 @@
       <p>Footer</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+      //fungsi untuk mengambil data dari API dan menampilkannya ke
+      // dalam html
+      function ambilDataDariAPI() {
+        axios.get('api.php?id=1')
+        .then(response =>{
+            //definisikan constanta data
+            const data = response.data;
+            //manipulasi html untuk menampilkan data berita
+            const beritaContainer = document.getElementById('beritaContainer');
+            const beritaDiv = document.createElement('div');
+            beritaDiv.className = 'col-sm-12';
+            beritaDiv.innerHTML = `
+                    <h2 class="mt-2">${data.judul}</h2>
+                    <h5>${data.subjudul}, ${data.tgl} </h5>
+                    <img src="image/gambar1.jpg" alt="Gambar Artikel" class="img-fluid">
+                    <p align="justify">
+                        ${data.isi}
+                    </p>
+            `;
+            beritaContainer.appendChild(beritaDiv);
+        })
+        .catch(error =>{
+            console.log("error", error)
+        },1000);
+      }
+    </script>
   </body>
 </html>

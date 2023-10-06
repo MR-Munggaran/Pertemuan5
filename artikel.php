@@ -41,7 +41,8 @@
         </div>
     </nav>
     <div class="container">
-        <section>
+        <section> 
+            <div class="row">
             <?php 
             include "connect.php";
             include "fungsi.php";
@@ -59,12 +60,10 @@
                 // while ($row = mysqli_fetch_assoc($hasil)){
                 $row = mysqli_fetch_assoc($hasil);
             ?>
-             
-            <div class="row">
                 <div class="col-sm-12">
                     <h2 class="mt-2"><?= $row["judul"];?></h2>
                     <h5><?= $row["subjudul"];?>, <?= $row["tgl"];?></h5>
-                    <div class="fakeimg">Fake Image</div>
+                    <img src="image/gambar1.jpg" alt="Gambar Artikel" class="img-fluid">
                     <p align="justify">
                         <?php 
                         echo $row["isi"];
